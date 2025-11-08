@@ -25,15 +25,6 @@ map.on('load', function() {
         }
         
     }); 
-   // Change cursor to pointer when hovering over points
-    map.on('mouseenter', 'points-layer', () => {
-        map.getCanvas().style.cursor = 'pointer';
-    });
-
-    // Change cursor back when leaving points
-    map.on('mouseleave', 'points-layer', () => {
-        map.getCanvas().style.cursor = '';
-    }); 
      map.on('click', 'points-layer', (e) => {
       const coordinates = e.features[0].geometry.coordinates.slice();
       const properties = e.features[0].properties;
