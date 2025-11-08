@@ -40,8 +40,8 @@ map.on('load', function() {
     const popupContent = `
             <div>
                 <h3>${properties.Landmark}</h3>
-                <p><strong>Address:</strong> ${properties.Address}</p>
-                <p><strong>Architect & Date:</strong> ${properties.Architect_Date}</p>
+                <p><strong>Address:</strong> ${properties.Address}</p> 
+                <p><strong>Architect & Date:</strong> ${properties.Architect_Date}</p> 
                 <p><strong>Designated:</strong> ${properties.Designated}</p>
                 ${properties.Link ? `<p><a href="${properties.Link}" target="_blank">More Information</a></p>` : ''}
                 ${properties.Notes ? `<p><strong>Notes:</strong> ${properties.Notes}</p>` : ''}
@@ -51,5 +51,16 @@ map.on('load', function() {
             .setLngLat(coordinates)
             .setHTML(popupContent)
             .addTo(map);
-    }); 
-});
+    });
+
+      // Change cursor to pointer when hovering over points
+      map.on('mouseenter', 'points-layer', () => {
+              map.getCanvas().style.cursor = 'pointer';
+      });
+
+      // Change cursor back when leaving points
+      map.on('mouseleave', 'points-layer', () => {
+            map.getCanvas().style.cursor = '';
+      });       
+  });
+  ```
